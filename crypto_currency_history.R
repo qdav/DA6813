@@ -12,7 +12,6 @@ library("BatchGetSymbols")
 BEG_DATE <- as.Date("2018-06-01")
 END_DATE <- as.Date("2019-06-24")
 
-
 # Quinn's Quandl API Key
 Quandl.api_key("awJDWs_WvUiV6VWC8rLb")
 
