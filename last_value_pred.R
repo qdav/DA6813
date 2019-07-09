@@ -1,3 +1,4 @@
+library("dplyr")
 
 # Experimenting with last value prediction
 # https://towardsdatascience.com/machine-learning-techniques-applied-to-stock-price-prediction-6c1994da8001
@@ -6,6 +7,21 @@
 # days and computing rmse between bitcoin actual values and other predictors.
 # While the last value method is unsophisticated, it serves as a type of
 # baseline for comparing other methods. 
+
+# https://stackoverflow.com/questions/16193333/moving-average-of-previous-three-values-in-r/48322284
+mavback <- function(x,n){ stats::filter(x, c(0, rep(1/n,n)), sides=1) }
+
+# based on [h2] readings starting [h1] periods back
+mavback1<-function(x,h1,h2){
+  a<-mavback(x,h1)
+  b<-mavback(x,h1-h2)
+  c<-(1/h2)*(h1*a -(h1-h2)*b)
+  return(c)
+}
+
+
+BEG_DATE <- as.Date("2018-06-01")
+END_DATE <- as.Date("2019-06-24")
 
   
 # using the all_hist data frame produced by the crypto_currency_history.r code
