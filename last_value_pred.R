@@ -12,7 +12,7 @@
 # as predictors. I'm using the scale function here, but need to do research as to 
 # whether it's really doing what I expect. What I want, is a list of normalized
 # values based on percentage change
-
+  
 # using the all_hist data frame produced by the crypto_currency_history code
 all_hist_scale <- as.data.frame(scale(all_hist[, -1]))
 
